@@ -1,0 +1,14 @@
+Use awk to speed up failed build list generation.
+Currcetly we set loads of variables by passing the contents of the of the $project_log to grep and recording the result. 
+Next a large if-then-else statement is used to assign a flag status to another variable which is then passed to a bash case statement. 
+This is necessary because the case statement in bash does not support regexes.
+One way to speed up the process is to pass the $project_log to awk and use the awk switch statement act directly on the project_log. 
+If it works then project loag would only need to be read once. 
+
+BEGIN
+Pass the external variable $project_log to awk
+
+awk -v=$project_log
+
+case $project_log
+		  /

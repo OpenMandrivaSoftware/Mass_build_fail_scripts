@@ -1,0 +1,22 @@
+Things that need fixing:
+""" If there are three quotes in a field it blows googles import
+
+
+
+
+If there is a + in the package name th record is split i.e. c++ Timidity++ etc
+If you get a field like this for the error description cell this breaks Google import
+File '/usr/bin/xxx"
+
+Basically intermediate quotes " in a field should be escaped I think this will fix all issues.
+
+
+
+
+
+FIXED
+The ++ problem is because I am using + as a line separator this subsequently is replaced by new lines in the case of c++ I would get
+c
+
+next package.
+Fixed by using a char pair +! as the separator
