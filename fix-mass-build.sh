@@ -77,7 +77,9 @@ if ! [ -e failed_builds_list.txt ]; then
 	exit 1
 fi
 
+FIXED=0
 for build in $(cat failed_builds_list.txt |cut -d';' -f1 |cut -d' ' -f2 |sort |uniq); do
+	grep -qE "^$build$" presumed-fixed.list 2>/dev/null && continue
 	PACKAGE=$(cat failed_builds_list.txt |grep "^ID: $build;" |cut -d';' -f2 |cut -d' ' -f3)
 	echo -n "$build: $PACKAGE: "
 	if ! [ -e $build.log ]; then
@@ -105,6 +107,8 @@ for build in $(cat failed_builds_list.txt |cut -d';' -f1 |cut -d' ' -f2 |sort |u
 		checkout $PACKAGE
 		addBuildDep $PACKAGE 'pkgconfig(zlib)'
 		commit $PACKAGE
+		FIXED=$((FIXED+1))
+		echo $build >>presumed-fixed.list
 	elif grep -q "\(you may need to install the .* module\)" $build.log; then
 		echo -n "Missing perl dependencies: "
 		BD=""
@@ -117,7 +121,11 @@ for build in $(cat failed_builds_list.txt |cut -d';' -f1 |cut -d' ' -f2 |sort |u
 			addBuildDep $PACKAGE $i
 		done
 		commit $PACKAGE
+		FIXED=$((FIXED+1))
+		echo $build >>presumed-fixed.list
 	else
 		echo "Unknown error -- needs manual attention"
 	fi
 done
+
+echo "Fixed up to $FIXED packages"
