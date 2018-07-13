@@ -3,7 +3,6 @@
 # (C) 2018 Bernhard "Bero" Rosenkraenzer <bero@lindev.ch>
 # Released under the GPLv3
 
-
 # Get the build log URL from an ABF build id
 # Example:
 #	buildlog 193516
@@ -28,6 +27,7 @@ checkout() {
 commit() {
 	cd "$1"
 	git commit -am "Fix build failure"
+#	git show HEAD
 	git push origin master
 	cd ..
 	rm -rf "$1"
@@ -45,19 +45,16 @@ addBuildDep() {
 	shift
 	if grep -qiE "^BuildRequires:[[:space:]]*`echo $@ |sed -e 's,(,\\\(,g;s,),\\\),g'`[[:space:]]*" *.spec; then
 		echo "	$PKG already requires $@ -- probably fixed earlier"
+		cd ..
 		return
 	fi
 	# Let's see if there's any other BuildRequires so we can match indentation...
 	if grep -qiE '^BuildRequires[[:space:]]*:.*' *.spec; then
 		local BR="$(grep -iE '^BuildRequires[[:space:]]*:[[:space:]]*' *.spec |head -n1)"
-		echo "BR: $BR"
 		local DEP="$(echo $BR |cut -d: -f2- |sed -e 's,^[[:space:]]*,,')"
-		echo "DEP: $DEP"
 		local OLDIFS="$IFS"
 		export IFS=@
 		echo $BR |sed -e "s,$DEP,$@," >ND.$$; NEWDEP="$(cat ND.$$)"; rm -f ND.$$
-		echo "NEWDEP: $NEWDEP"
-		#sed -i -e "/^BuildRequires/Ii$NEWDEP" *.spec
 		sed -i -e "0,/^BuildRequires/Is//$NEWDEP\n&/" *.spec
 		export IFS=$OLDIFS
 	else
@@ -66,21 +63,13 @@ addBuildDep() {
 	cd ..
 }
 
-if [ -z "$1" -o -n "$2" ]; then
-	echo "Usage: $0 mass-build-number"
-	exit 1
-fi
-rm -f failed_builds_list.txt *.json
-wget https://abf.openmandriva.org/platforms/cooker/mass_builds/$1/failed_builds_list.txt
-if ! [ -e failed_builds_list.txt ]; then
-	echo "Mass build $1 doesn't seem to exist"
-	exit 1
-fi
-
-FIXED=0
-for build in $(cat failed_builds_list.txt |cut -d';' -f1 |cut -d' ' -f2 |sort |uniq); do
-	grep -qE "^$build$" presumed-fixed.list 2>/dev/null && continue
-	PACKAGE=$(cat failed_builds_list.txt |grep "^ID: $build;" |cut -d';' -f2 |cut -d' ' -f3)
+# Try to fix a build
+# Usage:
+#	fixBuild buildId
+fixBuild() {
+	local build="$1"
+	local PACKAGE=$(cat failed_builds_list.txt |grep "^ID: $build;" |cut -d';' -f2 |cut -d' ' -f3)
+	local i
 	echo -n "$build: $PACKAGE: "
 	if ! [ -e $build.log ]; then
 		wget https://abf.openmandriva.org/api/v1/build_lists/$build.json
@@ -107,25 +96,89 @@ for build in $(cat failed_builds_list.txt |cut -d';' -f1 |cut -d' ' -f2 |sort |u
 		checkout $PACKAGE
 		addBuildDep $PACKAGE 'pkgconfig(zlib)'
 		commit $PACKAGE
-		FIXED=$((FIXED+1))
 		echo $build >>presumed-fixed.list
 	elif grep -q "\(you may need to install the .* module\)" $build.log; then
 		echo -n "Missing perl dependencies: "
 		BD=""
 		while read r; do
 			BD="$BD perl($r)"
-		done  <<<"$(grep '(you may need to install the .* module)' $build.log |sed -E 's,.*\(you may need to install the (.*) module\).*,\1,g' |sort |uniq)"
+		done  <<<"$(grep '(you may need to install the .* module)' $build.log |sed -E 's,.*\(you may need to install the (.*) module\).*,\1,g' |sort -r |uniq)"
 		echo "$BD -- auto-fixing"
 		checkout $PACKAGE
 		for i in $BD; do
 			addBuildDep $PACKAGE $i
 		done
 		commit $PACKAGE
-		FIXED=$((FIXED+1))
 		echo $build >>presumed-fixed.list
+	elif grep -q "error: cannot find -l" $build.log; then
+		LIBS=" "
+		while read r; do
+			local DEP="$(echo $r |sed -e 's,.*error: cannot find -l,,;s, .*,,;s,:.*,,')"
+			LIBS="$LIBS $DEP"
+		done <<<"$(grep 'error: cannot find -l' $build.log)"
+		LIBS="$(echo $LIBS |sed -e 's, ,\n,g' |sort -r |uniq)"
+		echo "Missing libs: $LIBS -- auto-fixing"
+		checkout $PACKAGE
+		for i in $LIBS; do
+			if [ -n "$(dnf repoquery --whatprovides pkgconfig\($i\) 2>/dev/null)" ]; then
+				addBuildDep $PACKAGE "pkgconfig($i)"
+			elif [ -n "$(dnf repoquery --whatprovides pkgconfig\(lib$i\) 2>/dev/null)" ]; then
+				addBuildDep $PACKAGE "pkgconfig(lib$i)"
+			elif [ -n "$(dnf repoquery --whatprovides pkgconfig\(${i}lib\) 2>/dev/null)" ]; then
+				addBuildDep $PACKAGE "pkgconfig(${i}lib)"
+			else
+				local lc="`echo $i |tr A-Z a-z`"
+				if [ -n "$(dnf repoquery --whatprovides pkgconfig\($lc\) 2>/dev/null)" ]; then
+					addBuildDep $PACKAGE "pkgconfig($lc)"
+				elif [ -n "$(dnf repoquery --whatprovides pkgconfig\(lib$lc\) 2>/dev/null)" ]; then
+					addBuildDep $PACKAGE "pkgconfig(lib$lc)"
+				elif [ -n "$(dnf repoquery --whatprovides pkgconfig\(${lc}lib\) 2>/dev/null)" ]; then
+					addBuildDep $PACKAGE "pkgconfig(${lc}lib)"
+				else
+					# Let's find SOME way to drag this in...
+					local PROVIDER="$(dnf repoquery --whatprovides /usr/lib64/lib${i}.so 2>/dev/null |head -n1)"
+					[ -z "$PROVIDER" ] && PROVIDER="$(dnf repoquery --whatprovides /lib64/lib${i}.so 2>/dev/null |head -n1)"
+					[ -z "$PROVIDER" ] && PROVIDER="$(dnf repoquery --whatprovides /usr/lib/lib${i}.so 2>/dev/null |head -n1)"
+					[ -z "$PROVIDER" ] && PROVIDER="$(dnf repoquery --whatprovides /lib/lib${i}.so 2>/dev/null |head -n1)"
+					[ -z "$PROVIDER" ] && PROVIDER="$(dnf repoquery --whatprovides /usr/lib64/lib${i}.a 2>/dev/null |head -n1)"
+					[ -z "$PROVIDER" ] && PROVIDER="$(dnf repoquery --whatprovides /lib64/lib${i}.a 2>/dev/null |head -n1)"
+					[ -z "$PROVIDER" ] && PROVIDER="$(dnf repoquery --whatprovides /usr/lib/lib${i}.a 2>/dev/null |head -n1)"
+					[ -z "$PROVIDER" ] && PROVIDER="$(dnf repoquery --whatprovides /lib/lib${i}.a 2>/dev/null |head -n1)"
+					[ -z "$PROVIDER" ] && continue # Let's give up on this one...
+					local FOUND=0
+					local pc
+					while read pc; do
+						addBuildDep $PACKAGE "$(echo $pc |sed -e 's, .*,,')"
+						FOUND=1
+					done <<<"$(dnf repoquery --provides $PROVIDER |grep -E '^pkgconfig\(')"
+					if [ "$FOUND" = "0" ]; then
+						# Last resort... Let's try to be reasonable
+						local dep
+						while read dep; do
+							addBuildDep $PACKAGE "$(echo $dep |sed -e 's, .*,,')"
+						done <<<"$(dnf repoquery --provides $PROVIDER |grep -vE '^(devel\(|\(x86-64\)|^lib64)')"
+					fi
+				fi
+			fi
+		done
+		commit $PACKAGE
 	else
 		echo "Unknown error -- needs manual attention"
 	fi
-done
+}
 
-echo "Fixed up to $FIXED packages"
+if [ -z "$1" -o -n "$2" ]; then
+	echo "Usage: $0 mass-build-number"
+	exit 1
+fi
+rm -f failed_builds_list.txt *.json
+wget https://abf.openmandriva.org/platforms/cooker/mass_builds/$1/failed_builds_list.txt
+if ! [ -e failed_builds_list.txt ]; then
+	echo "Mass build $1 doesn't seem to exist"
+	exit 1
+fi
+
+for build in $(cat failed_builds_list.txt |cut -d';' -f1 |cut -d' ' -f2 |sort |uniq); do
+	grep -qE "^$build$" presumed-fixed.list 2>/dev/null && continue
+	fixBuild $build
+done
