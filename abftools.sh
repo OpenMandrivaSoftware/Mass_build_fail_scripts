@@ -63,5 +63,5 @@ platformId() {
 latestSuccessfulBuild() {
 	local platform=$(platformId $1)
 	local arch=$(archId $3)
-	curl -s "https://abf.openmandriva.org/api/v1/build_lists.json?filter\\[status\\]=6000&filter\\[project_name\\]=$2&filter\\[arch_id\\]=$arch&filter\\[build_for_platform_id\\]=$platform" |parseJson '["build_lists"]' status id 6000
+	curl -s "https://abf.openmandriva.org/api/v1/build_lists.json?filter\\[status\\]=6000&filter\\[project_name\\]=$2&filter\\[arch_id\\]=$arch&filter\\[build_for_platform_id\\]=$platform" |parseJson '["build_lists"]' status id 6000 |head -n1
 }
