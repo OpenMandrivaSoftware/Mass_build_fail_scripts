@@ -73,9 +73,24 @@ fixBuild() {
 	if grep -q "Only garbage was found in the patch input" $build.log; then
 		echo "Uses compressed patch, not supported by rpm4"
 		# TODO uncompress patches, adapt spec, commit, rebuild
-	elif grep -q "Could not find suitable distribution for Requirement" $build.log; then
+	elif grep -q "Could not find suitable distribution for Requirement.parse(" $build.log; then
 		echo "Missing python dependency"
-		# TODO identify dependency, add to spec, commit, rebuild
+		checkout $PACKAGE
+		while read r; do
+			local DEP=$(echo $r |cut -d'(' -f2 |cut -d')' -f1 |sed -e "s,['\"]*,,g")
+			if echo $DEP |grep -qE '[<=>]'; then
+				local COMPARE=$(echo $DEP |sed -e 's,[^<=>]*,,;s,[^<=>].*,,')
+				local VER=$(echo $DEP |sed -e 's,.*[<=>],,')
+				DEP="$(echo $DEP |sed -e 's,[<=>].*,,')"
+			else
+				local COMPARE=""
+				local VER=""
+			fi
+			DEP="$(echo python3egg\($DEP\) $COMPARE $VER)"
+			addBuildDep $PACKAGE "$DEP"
+		done <<<"$(grep 'Could not find suitable distribution for Requirement.parse(' $build.log)"
+		commit $PACKAGE
+		echo $build >>presumed-fixed.list
 	elif grep -q "Command not found" $build.log; then
 		echo "Missing tool dependency"
 		# TODO identify dependency, add to spec, commit, rebuild
