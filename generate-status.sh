@@ -42,6 +42,7 @@ cat failed_builds_list.txt |while read r; do
 	ARCH="$(echo $r |cut -d';' -f3 |cut -d':' -f2 |xargs echo)"
 	LATEST="$(latestSuccessfulBuild cooker $PROJECT $ARCH)"
 	LOG="$(buildlog $ID)"
+	[ -z "$LOG" ] && LOG="$(buildlog $ID script_output.log)"
 	FIXED=false
 	if [ -n "$LATEST" ]; then
 		if [ "$LATEST" -ge "$ID" ]; then

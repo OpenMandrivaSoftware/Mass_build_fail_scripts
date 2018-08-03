@@ -20,11 +20,15 @@ for i in entries:
 # Example:
 #	buildlog 193516
 #	Returns URL to build.log for build 193516
+#	buildlog 193516 script_output.log
+#	Returns URL to script_output.log for build 193516
 buildlog() {
+	local LOGFILE="$2"
+	[ -z "$LOGFILE" ] && LOGFILE="build.log"
 	if [ -e $1.json ]; then
 		cat $1.json |parseJson '["build_list"]["logs"]' file_name url build.log
 	else
-		curl -s https://abf.openmandriva.org/api/v1/build_lists/$1.json |parseJson '["build_list"]["logs"]' file_name url build.log
+		curl -s https://abf.openmandriva.org/api/v1/build_lists/$1.json |parseJson '["build_list"]["logs"]' file_name url "$LOGFILE"
 	fi
 }
 

@@ -21,6 +21,7 @@ commit() {
 	git push origin master
 	cd ..
 	rm -rf "$1"
+	abf chain_build -a znver1 -a x86_64 -a i686 -a aarch64 -a armv7hnl -b master --auto-publish --update-type enhancement openmandriva/$PACKAGE
 }
 
 # Add build dependency to a package
