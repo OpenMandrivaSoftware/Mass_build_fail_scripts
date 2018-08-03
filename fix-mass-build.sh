@@ -3,19 +3,9 @@
 # (C) 2018 Bernhard "Bero" Rosenkraenzer <bero@lindev.ch>
 # Released under the GPLv3
 
-# Get the build log URL from an ABF build id
-# Example:
-#	buildlog 193516
-#	Returns URL to build.log for build 193516
-buildlog() {
-	cat $build.json |python -c '
-import sys,json
-logs=json.load(sys.stdin)["build_list"]["logs"]
-for i in logs:
-	if i["file_name"] == "build.log":
-		print(i["url"])
-'
-}
+OURDIR="$(realpath $(dirname $0))"
+
+. ${OURDIR}/abftools.sh
 
 # Check out a package from git
 checkout() {
