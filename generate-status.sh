@@ -19,7 +19,7 @@ cat <<EOF
 		<style type="text/css">
 tr:nth-child(even) { background-color: #d0d0d0; }
 tr:nth-child(odd) { background-color: white; }
-.fixed { background-color: green; }
+tr.fixed { background-color: green; }
 		</style>
 	</head>
 	<body>
