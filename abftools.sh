@@ -2,6 +2,25 @@
 # (C) 2018 Bernhard "Bero" Rosenkraenzer <bero@lindev.ch>
 # Released under the GPLv3
 
+abfAuth() {
+	if [ -z "$ABFAUTH" ]; then
+		local user="$(cat ~/.abfcfg |grep '^login =' |cut -d= -f2 |xargs echo)"
+		local pass="$(cat ~/.abfcfg |grep '^password =' |cut -d= -f2 |xargs echo)"
+		if [ -z "$user" -o -z "$pass" ]; then
+			local auth
+			. ~/.abbrc
+			user="$(echo $auth |cut -d: -f1)"
+			pass="$(echo $auth |cut -d: -f2)"
+			if [ -z "$user" -o -z "$pass" ]; then
+				echo "You need to set up your ABF login in ~/.abfcfg or ~/.abbrc"
+				exit 1
+			fi
+		fi
+		export ABFAUTH="$user:$pass"
+	fi
+	echo -n $ABFAUTH
+}
+
 # Parse a simple json fragment
 # Example:
 #	curl https://abf.openmandriva.org/api/v1/arches |parseJson '["architectures"]' name id aarch64
@@ -28,7 +47,7 @@ buildlog() {
 	if [ -e $1.json ]; then
 		cat $1.json |parseJson '["build_list"]["logs"]' file_name url build.log
 	else
-		curl -s https://abf.openmandriva.org/api/v1/build_lists/$1.json |parseJson '["build_list"]["logs"]' file_name url "$LOGFILE"
+		curl --user $(abfAuth) -s https://abf.openmandriva.org/api/v1/build_lists/$1.json |parseJson '["build_list"]["logs"]' file_name url "$LOGFILE"
 	fi
 }
 
@@ -36,26 +55,14 @@ buildlog() {
 #	archId znver1
 # --> returns znver1's arch ID (currently 7)
 archId() {
-	curl -s https://abf.openmandriva.org/api/v1/arches |parseJson '["architectures"]' name id $1
+	curl --user $(abfAuth) -s https://abf.openmandriva.org/api/v1/arches |parseJson '["architectures"]' name id $1
 }
 
 # Get the ID for an arch
 #	platformId cooker
 # --> returns Cooker's arch ID (currently 28)
 platformId() {
-	local user="$(cat ~/.abfcfg |grep '^login =' |cut -d= -f2 |xargs echo)"
-	local pass="$(cat ~/.abfcfg |grep '^password =' |cut -d= -f2 |xargs echo)"
-	if [ -z "$user" -o -z "$pass" ]; then
-		local auth
-		. ~/.abbrc
-		user="$(echo $auth |cut -d: -f1)"
-		pass="$(echo $auth |cut -d: -f2)"
-		if [ -z "$user" -o -z "$pass" ]; then
-			echo "You need to set up your ABF login in ~/.abfcfg or ~/.abbrc"
-			exit 1
-		fi
-	fi
-	curl -s --user "$user:$pass" https://abf.openmandriva.org/api/v1/platforms.json?type=main |parseJson '["platforms"]' name id $1
+	curl -s --user $(abfAuth) https://abf.openmandriva.org/api/v1/platforms.json?type=main |parseJson '["platforms"]' name id $1
 }
 
 # Get the latest successful (== published) ID of a build
@@ -67,5 +74,5 @@ platformId() {
 latestSuccessfulBuild() {
 	local platform=$(platformId $1)
 	local arch=$(archId $3)
-	curl -s "https://abf.openmandriva.org/api/v1/build_lists.json?filter\\[status\\]=6000&filter\\[project_name\\]=$2&filter\\[arch_id\\]=$arch&filter\\[build_for_platform_id\\]=$platform" |parseJson '["build_lists"]' status id 6000 |head -n1
+	curl -s --user $(abfAuth) "https://abf.openmandriva.org/api/v1/build_lists.json?filter\\[status\\]=6000&filter\\[project_name\\]=$2&filter\\[arch_id\\]=$arch&filter\\[build_for_platform_id\\]=$platform" |parseJson '["build_lists"]' status id 6000 |head -n1
 }
