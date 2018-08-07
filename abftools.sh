@@ -47,7 +47,7 @@ buildlog() {
 	if [ -e $1.json ]; then
 		cat $1.json |parseJson '["build_list"]["logs"]' file_name url build.log
 	else
-		curl --user $(abfAuth) -s https://abf.openmandriva.org/api/v1/build_lists/$1.json |parseJson '["build_list"]["logs"]' file_name url "$LOGFILE"
+		curl -m 120 --retry 5 --user $(abfAuth) -s https://abf.openmandriva.org/api/v1/build_lists/$1.json |parseJson '["build_list"]["logs"]' file_name url "$LOGFILE"
 	fi
 }
 
@@ -55,14 +55,14 @@ buildlog() {
 #	archId znver1
 # --> returns znver1's arch ID (currently 7)
 archId() {
-	curl --user $(abfAuth) -s https://abf.openmandriva.org/api/v1/arches |parseJson '["architectures"]' name id $1
+	curl -m 120 --retry 5 --user $(abfAuth) -s https://abf.openmandriva.org/api/v1/arches |parseJson '["architectures"]' name id $1
 }
 
 # Get the ID for an arch
 #	platformId cooker
 # --> returns Cooker's arch ID (currently 28)
 platformId() {
-	curl -s --user $(abfAuth) https://abf.openmandriva.org/api/v1/platforms.json?type=main |parseJson '["platforms"]' name id $1
+	curl -m 120 --retry 5 -s --user $(abfAuth) https://abf.openmandriva.org/api/v1/platforms.json?type=main |parseJson '["platforms"]' name id $1
 }
 
 # Get the latest successful (== published) ID of a build
@@ -74,5 +74,5 @@ platformId() {
 latestSuccessfulBuild() {
 	local platform=$(platformId $1)
 	local arch=$(archId $3)
-	curl -s --user $(abfAuth) "https://abf.openmandriva.org/api/v1/build_lists.json?filter\\[status\\]=6000&filter\\[project_name\\]=$2&filter\\[arch_id\\]=$arch&filter\\[build_for_platform_id\\]=$platform" |parseJson '["build_lists"]' status id 6000 |head -n1
+	curl -m 120 --retry 5 -s --user $(abfAuth) "https://abf.openmandriva.org/api/v1/build_lists.json?filter\\[status\\]=6000&filter\\[project_name\\]=$2&filter\\[arch_id\\]=$arch&filter\\[build_for_platform_id\\]=$platform" |parseJson '["build_lists"]' status id 6000 |head -n1
 }
