@@ -1,0 +1,13 @@
+[Unit]
+Description=Update the OpenMandriva mass build status report
+
+[Service]
+Type=oneshot
+ExecStart=/opt/Mass_build_fail_scripts/update-mass-build-status.sh
+CPUSchedulingPolicy=batch
+Nice=19
+IOSchedulingClass=best-effort
+IOSchedulingPriority=7
+EnvironmentFile=/etc/sysconfig/massbuild.conf
+User=massbuild
+Group=massbuild

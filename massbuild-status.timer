@@ -1,0 +1,11 @@
+[Unit]
+Description=Update the OpenMandriva mass build status report
+
+[Timer]
+OnCalendar=3h
+AccuracySec=5min
+Persistent=true
+OnBootSec=1min
+
+[Install]
+WantedBy=timers.target
