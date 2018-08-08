@@ -5,5 +5,5 @@ if [ -z "$ABFAUTH" ]; then
 fi
 cd /opt/Mass_build_fail_scripts
 git pull
-./generate-status.sh 155 >massbuild.html.new
-mv -f massbuild.html.new massbuild.html
+./generate-status.sh 155 >massbuild-new.html
+mv -f massbuild-new.html massbuild.html
