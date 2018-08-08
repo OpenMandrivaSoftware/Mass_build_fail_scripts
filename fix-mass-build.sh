@@ -168,6 +168,9 @@ fixBuild() {
 			fi
 		done
 		commit $PACKAGE
+	elif grep -q "/mdv/build-rpm.sh: No such file or directory" $build.log; then
+		echo "Infra error --rebuilding"
+		abf chain_build -a znver1 -a x86_64 -a i686 -a aarch64 -a armv7hnl -b master --auto-publish --update-type enhancement openmandriva/$PACKAGE
 	else
 		echo "Unknown error -- needs manual attention"
 	fi
