@@ -77,8 +77,12 @@ cat failed_builds_list.txt |while read r; do
 				echo -n "Missing zlib dependency"
 			elif grep -q "\(you may need to install the .* module\)" build.log; then
 				echo -n "Missing perl dependency"
+			elif grep -q "Can't locate \(.*\) in @INC" build.log; then
+				echo -n "Missing perl dependency"
 			elif grep -q "error: cannot find -l" build.log; then
 				echo -n "Missing library dependency"
+			elif grep -q 'error: Installed (but unpackaged) file(s) found' build.log; then
+				echo -n "Unpackaged files found, broken spec file?"
 			else
 				echo -n "Unknown failure"
 			fi
