@@ -81,9 +81,13 @@ cat failed_builds_list.txt |while read r; do
 				echo -n "Missing perl dependency"
 			elif grep -q "error: cannot find -l" build.log; then
 				echo -n "Missing library dependency"
+			elif grep -q "libtool:   error: cannot determine absolute directory" build.log; then
+				echo -n "libtool error(s)"
 			elif grep -q 'error: Installed (but unpackaged) file(s) found' build.log; then
 				echo -n "Unpackaged files found, broken spec file?"
 			elif grep -q 'Configuring incomplete, errors occurred!' build.log; then
+				echo -n "Missing dependency"
+			elif grep -q 'configure: error:' build.log; then
 				echo -n "Missing dependency"
 			elif grep -q '/mdv/build-rpm.sh: No such file or directory' build.log; then
 				echo -n "Infra error"
