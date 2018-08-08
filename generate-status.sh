@@ -83,6 +83,8 @@ cat failed_builds_list.txt |while read r; do
 				echo -n "Missing library dependency"
 			elif grep -q 'error: Installed (but unpackaged) file(s) found' build.log; then
 				echo -n "Unpackaged files found, broken spec file?"
+			elif grep -q 'Configuring incomplete, errors occurred!' build.log; then
+				echo -n "Missing dependency"
 			else
 				echo -n "Unknown failure"
 			fi
