@@ -85,6 +85,8 @@ cat failed_builds_list.txt |while read r; do
 				echo -n "Unpackaged files found, broken spec file?"
 			elif grep -q 'Configuring incomplete, errors occurred!' build.log; then
 				echo -n "Missing dependency"
+			elif grep -q '/mdv/build-rpm.sh: No such file or directory' build.log; then
+				echo -n "Infra error"
 			else
 				echo -n "Unknown failure"
 			fi
