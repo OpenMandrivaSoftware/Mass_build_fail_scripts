@@ -45,9 +45,9 @@ buildlog() {
 	local LOGFILE="$2"
 	[ -z "$LOGFILE" ] && LOGFILE="build.log"
 	if [ -e $1.json ]; then
-		cat $1.json |parseJson '["build_list"]["logs"]' file_name url build.log
+		cat $1.json |parseJson '["build_list"]["logs"]' file_name url build.log |head -n1
 	else
-		curl -m 120 --retry 5 --user $(abfAuth) -s https://abf.openmandriva.org/api/v1/build_lists/$1.json |parseJson '["build_list"]["logs"]' file_name url "$LOGFILE"
+		curl -m 120 --retry 5 --user $(abfAuth) -s https://abf.openmandriva.org/api/v1/build_lists/$1.json |parseJson '["build_list"]["logs"]' file_name url "$LOGFILE" |head -n1
 	fi
 }
 
