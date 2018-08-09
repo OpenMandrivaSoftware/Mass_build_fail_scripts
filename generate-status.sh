@@ -91,6 +91,12 @@ cat failed_builds_list.txt |while read r; do
 				echo -n "Missing dependency"
 			elif grep -q 'configure: error:' build.log; then
 				echo -n "Missing dependency"
+			elif grep -q ": some warnings being treated as errors" build.log; then
+				echo -n "Build uses -Werror. Broken code?"
+			elif grep -q "BUILDSTDERR: error: File not found:" build.log; then
+				echo -n "Spec file error, file defined but not found"
+			elif grep -q "BUILDSTDERR: error: File /builddir/build/SOURCES/\(.*\): No such file or directory" build.log; then
+				echo -n "Source tarball not found, infra or spec file error"
 			elif grep -q '/mdv/build-rpm.sh: No such file or directory' build.log; then
 				echo -n "Infra error"
 			else
