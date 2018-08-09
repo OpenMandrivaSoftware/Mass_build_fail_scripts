@@ -99,6 +99,8 @@ cat failed_builds_list.txt |while read r; do
 				echo -n "Source tarball not found, infra or spec file error"
 			elif grep -q '/mdv/build-rpm.sh: No such file or directory' build.log; then
 				echo -n "Infra error"
+			elif grep -q "SyntaxError: invalid syntax" build.log; then
+				echo -n "Not python3 compatible"
 			else
 				echo -n "Unknown failure"
 			fi
