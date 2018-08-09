@@ -16,6 +16,8 @@ cat <<EOF
 <html>
 	<head>
 		<title>OpenMandriva mass build $1 status</title>
+		<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+		<meta http-equiv="Expires" content="0" />
 		<style type="text/css">
 tr:nth-child(even) { background-color: #d0d0d0; }
 tr:nth-child(odd) { background-color: white; }
