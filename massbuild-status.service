@@ -2,6 +2,8 @@
 Description=Update the OpenMandriva mass build status report
 
 [Service]
+StandardOutput=null
+StandardError=null
 Type=oneshot
 ExecStart=/opt/Mass_build_fail_scripts/update-mass-build-status.sh
 CPUSchedulingPolicy=batch
