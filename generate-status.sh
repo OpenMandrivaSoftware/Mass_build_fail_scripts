@@ -101,6 +101,9 @@ cat failed_builds_list.txt |while read r; do
 				echo -n "Infra error"
 			elif grep -q "SyntaxError: invalid syntax" build.log; then
 				echo -n "Not python3 compatible"
+			elif grep -q "[a-zA-Z0-9].*\.[c,cpp,cxx,C,h,hpp,hxx,H]:.*:.*: error: " build.log; then
+				error_msg=$(grep -m1 "[a-zA-Z0-9].*.[c,cpp,h,hpp]:.*:.*: error: " build.log | sed -e 's,.*error: ,,')
+				echo -n "Compile error! Reason: $error_msg"
 			else
 				echo -n "Unknown failure"
 			fi
