@@ -110,6 +110,8 @@ cat failed_builds_list.txt |while read r; do
 			elif grep -q "[a-zA-Z0-9].*\.[c,cpp,cxx,C,h,hpp,hxx,H]:.*:.*: error: " build.log; then
 				error_msg=$(grep -m1 "[a-zA-Z0-9].*.[c,cpp,h,hpp]:.*:.*: error: " build.log | sed -e 's,.*error: ,,')
 				echo -n "Compile error! Reason: $error_msg"
+			elif grep -q "Unknown tag: %track" build.log; then
+				echo -n "Remove the %track section"
 			else
 				echo -n "Unknown failure"
 			fi
