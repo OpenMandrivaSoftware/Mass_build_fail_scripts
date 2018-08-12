@@ -75,14 +75,20 @@ cat failed_builds_list.txt |while read r; do
 				echo -n "Missing tool dependency"
 			elif grep -q "hunk FAILED" build.log; then
 				echo -n "Patch failed to apply"
+			elif grep -q "hunk ignored -- saving rejects to file" build.log; then
+				echo -n "Patch failed to apply, probably already upstream"
 			elif grep -q "Could not find the zlib library" build.log; then
 				echo -n "Missing zlib dependency"
 			elif grep -q "\(you may need to install the .* module\)" build.log; then
 				echo -n "Missing perl dependency"
 			elif grep -q "Can't locate \(.*\) in @INC" build.log; then
 				echo -n "Missing perl dependency"
+			elif grep -q ": cannot load such file -- \(.*\) (LoadError)" build.log; then
+				echo -n "Missing ruby/rubygems dependency"
 			elif grep -q "error: cannot find -l" build.log; then
 				echo -n "Missing library dependency"
+			elif grep -q ": error: linker command failed with exit code 1" build.log; then
+				echo -n "Compile problem, linker error."
 			elif grep -q "libtool:   error: cannot determine absolute directory" build.log; then
 				echo -n "libtool error(s)"
 			elif grep -q 'error: Installed (but unpackaged) file(s) found' build.log; then
