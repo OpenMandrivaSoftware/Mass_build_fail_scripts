@@ -112,6 +112,14 @@ cat failed_builds_list.txt |while read r; do
 				echo -n "Compile error! Reason: $error_msg"
 			elif grep -q "Unknown tag: %track" build.log; then
 				echo -n "Remove the %track section"
+			elif grep -q "No matching package to install:" build.log; then
+				echo -n "Missing dependency"
+			elif grep -q "Error: Some packages could not be found." build.log; then
+				echo -n "Missing dependency"
+			elif grep -q "*** Error compiling" build.log; then
+				echo -n "Python3 issue"
+			elif grep -q "Input specfile does not exist" build.log; then
+				echo -n "Spec file is missing"
 			else
 				echo -n "Unknown failure"
 			fi
