@@ -120,6 +120,8 @@ cat failed_builds_list.txt |while read r; do
 				echo -n "Python3 issue"
 			elif grep -q "Input specfile does not exist" build.log; then
 				echo -n "Spec file is missing"
+			elif grep -q "- nothing provides" build.log; then
+				echo -n "Broken dependency"
 			else
 				echo -n "Unknown failure"
 			fi
