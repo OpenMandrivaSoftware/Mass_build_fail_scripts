@@ -19,8 +19,6 @@ https://abf.openmandriva.org/build_lists/193416;python-nose;x86_64;9;
 https://abf.openmandriva.org/build_lists/193417;python-nose;znver1;9;
 https://abf.openmandriva.org/build_lists/193418;bind;x86_64;9;
 https://abf.openmandriva.org/build_lists/193419;bind;znver1;9;
-https://abf.openmandriva.org/build_lists/193422;urpm-tools;x86_64;9;
-https://abf.openmandriva.org/build_lists/193423;urpm-tools;znver1;9;
 https://abf.openmandriva.org/build_lists/193426;mkvtoolnix;x86_64;9;
 https://abf.openmandriva.org/build_lists/193427;mkvtoolnix;znver1;9;
 https://abf.openmandriva.org/build_lists/193428;vlc;x86_64;9;
@@ -170,8 +168,6 @@ https://abf.openmandriva.org/build_lists/193832;libpng12;x86_64;9;Compiler segfa
 https://abf.openmandriva.org/build_lists/193833;libpng12;znver1;9;Compiler segfault
 https://abf.openmandriva.org/build_lists/193834;shotwell;x86_64;9;Compiler segfault
 https://abf.openmandriva.org/build_lists/193835;shotwell;znver1;9;Compiler segfault
-https://abf.openmandriva.org/build_lists/193838;ldetect-lst;x86_64;9;Compiler segfault
-https://abf.openmandriva.org/build_lists/193839;ldetect-lst;znver1;9;Compiler segfault
 https://abf.openmandriva.org/build_lists/193842;improver_client;x86_64;9;Compiler segfault
 https://abf.openmandriva.org/build_lists/193844;telepathy-haze;x86_64;9;Compiler segfault
 https://abf.openmandriva.org/build_lists/193845;telepathy-haze;znver1;9;Compiler segfault
@@ -244,8 +240,6 @@ https://abf.openmandriva.org/build_lists/193991;python-sexy;znver1;9;Compiler se
 https://abf.openmandriva.org/build_lists/193994;perl-XML-SAX-Base;x86_64;9;Compiler segfault
 https://abf.openmandriva.org/build_lists/193995;perl-XML-SAX-Base;znver1;9;Compiler segfault
 https://abf.openmandriva.org/build_lists/193997;perl-Net-IP;znver1;9;Compiler segfault
-https://abf.openmandriva.org/build_lists/194070;cpuinfo;x86_64;9;Compiler segfault
-https://abf.openmandriva.org/build_lists/194071;cpuinfo;znver1;9;Compiler segfault
 https://abf.openmandriva.org/build_lists/194084;perl-Razor-Agent;x86_64;9;Compiler segfault
 https://abf.openmandriva.org/build_lists/194085;perl-Razor-Agent;znver1;9;Compiler segfault
 https://abf.openmandriva.org/build_lists/194088;kscd;x86_64;9;Compiler segfault
@@ -266,8 +260,6 @@ https://abf.openmandriva.org/build_lists/194201;libvirt;znver1;9;Compiler segfau
 https://abf.openmandriva.org/build_lists/194202;psmisc;x86_64;9;Compiler segfault
 https://abf.openmandriva.org/build_lists/194204;ndesk-dbus;x86_64;9;Compiler segfault
 https://abf.openmandriva.org/build_lists/194205;ndesk-dbus;znver1;9;Compiler segfault
-https://abf.openmandriva.org/build_lists/194212;meta-task;x86_64;9;Compiler segfault
-https://abf.openmandriva.org/build_lists/194213;meta-task;znver1;9;Compiler segfault
 https://abf.openmandriva.org/build_lists/194214;make;x86_64;9;Compiler segfault
 https://abf.openmandriva.org/build_lists/194215;make;znver1;9;Compiler segfault
 https://abf.openmandriva.org/build_lists/194225;spice-server;znver1;9;Compiler segfault
@@ -351,8 +343,6 @@ https://abf.openmandriva.org/build_lists/194434;php-pear-Config;x86_64;9;Compile
 https://abf.openmandriva.org/build_lists/194435;php-pear-Config;znver1;9;Compiler segfault
 https://abf.openmandriva.org/build_lists/194444;bittorrent;x86_64;9;Compiler segfault
 https://abf.openmandriva.org/build_lists/194445;bittorrent;znver1;9;Compiler segfault
-https://abf.openmandriva.org/build_lists/194456;perl-MDV-Distribconf;x86_64;9;Compiler segfault
-https://abf.openmandriva.org/build_lists/194457;perl-MDV-Distribconf;znver1;9;Compiler segfault
 https://abf.openmandriva.org/build_lists/194458;ldb;x86_64;9;Compiler segfault
 https://abf.openmandriva.org/build_lists/194459;ldb;znver1;9;Compiler segfault
 https://abf.openmandriva.org/build_lists/194462;doxygen;x86_64;9;Compiler segfault
@@ -512,8 +502,6 @@ https://abf.openmandriva.org/build_lists/195312;python-curl;x86_64;9;Compiler se
 https://abf.openmandriva.org/build_lists/195313;python-curl;znver1;9;Compiler segfault
 https://abf.openmandriva.org/build_lists/195324;perl-Digest-BubbleBabble;x86_64;9;Compiler segfault
 https://abf.openmandriva.org/build_lists/195325;perl-Digest-BubbleBabble;znver1;9;Compiler segfault
-https://abf.openmandriva.org/build_lists/195326;msec;x86_64;9;Compiler segfault
-https://abf.openmandriva.org/build_lists/195327;msec;znver1;9;Compiler segfault
 https://abf.openmandriva.org/build_lists/195335;virtuoso-opensource;znver1;9;Compiler segfault
 https://abf.openmandriva.org/build_lists/195336;perl-Perl-Critic;x86_64;9;Compiler segfault
 https://abf.openmandriva.org/build_lists/195337;perl-Perl-Critic;znver1;9;Compiler segfault
@@ -645,8 +633,6 @@ https://abf.openmandriva.org/build_lists/195813;perl-Crypt-SSLeay;znver1;9;Missi
 https://abf.openmandriva.org/build_lists/195819;tree;znver1;9;Missing source
 https://abf.openmandriva.org/build_lists/195824;perl-HTML-SimpleParse;x86_64;9;Missing source
 https://abf.openmandriva.org/build_lists/195825;perl-HTML-SimpleParse;znver1;9;Missing source
-https://abf.openmandriva.org/build_lists/195830;rosa-launcher;x86_64;9;Missing source
-https://abf.openmandriva.org/build_lists/195831;rosa-launcher;znver1;9;Missing source
 https://abf.openmandriva.org/build_lists/195832;perl-Mail-Transport-Dbx;x86_64;9;Missing source
 https://abf.openmandriva.org/build_lists/195833;perl-Mail-Transport-Dbx;znver1;9;Missing source
 https://abf.openmandriva.org/build_lists/195838;perl-Crypt-IDEA;x86_64;9;Missing source
@@ -691,8 +677,6 @@ https://abf.openmandriva.org/build_lists/195928;tagsoup;x86_64;9;API issue
 https://abf.openmandriva.org/build_lists/195929;tagsoup;znver1;9;API issue
 https://abf.openmandriva.org/build_lists/195934;armagetron;x86_64;9;API issue
 https://abf.openmandriva.org/build_lists/195935;armagetron;znver1;9;API issue
-https://abf.openmandriva.org/build_lists/195944;perl-URPM;x86_64;9;API issue
-https://abf.openmandriva.org/build_lists/195945;perl-URPM;znver1;9;API issue
 https://abf.openmandriva.org/build_lists/195950;iguanair;x86_64;9;API issue
 https://abf.openmandriva.org/build_lists/195951;iguanair;znver1;9;API issue
 https://abf.openmandriva.org/build_lists/195956;cups-drivers-magicolor2430dl;x86_64;9;API issue
@@ -724,8 +708,6 @@ https://abf.openmandriva.org/build_lists/196037;pnm2ppa;znver1;9;Conflicting typ
 https://abf.openmandriva.org/build_lists/196042;openvpn;x86_64;9;Conflicting types
 https://abf.openmandriva.org/build_lists/196050;perl-Array-Compare;x86_64;9;Conflicting types
 https://abf.openmandriva.org/build_lists/196051;perl-Array-Compare;znver1;9;Conflicting types
-https://abf.openmandriva.org/build_lists/196052;drakx-installer-binaries;x86_64;9;Conflicting types
-https://abf.openmandriva.org/build_lists/196053;drakx-installer-binaries;znver1;9;Conflicting types
 https://abf.openmandriva.org/build_lists/196057;nvtv;znver1;9;Conflicting types
 https://abf.openmandriva.org/build_lists/196058;php-pear-PHP_Compat;x86_64;9;Conflicting types
 https://abf.openmandriva.org/build_lists/196059;php-pear-PHP_Compat;znver1;9;Conflicting types
@@ -739,8 +721,6 @@ https://abf.openmandriva.org/build_lists/196068;php-pear-Console_Table;x86_64;9;
 https://abf.openmandriva.org/build_lists/196069;php-pear-Console_Table;znver1;9;Conflicting types
 https://abf.openmandriva.org/build_lists/196070;perl-Mail-IMAPClient;x86_64;9;Conflicting types
 https://abf.openmandriva.org/build_lists/196071;perl-Mail-IMAPClient;znver1;9;Conflicting types
-https://abf.openmandriva.org/build_lists/196074;drakwizard;x86_64;9;Conflicting types
-https://abf.openmandriva.org/build_lists/196075;drakwizard;znver1;9;Conflicting types
 https://abf.openmandriva.org/build_lists/196088;sablotron;x86_64;9;Conflicting types
 https://abf.openmandriva.org/build_lists/196089;sablotron;znver1;9;Conflicting types
 https://abf.openmandriva.org/build_lists/196096;python-OpenSSL;x86_64;9;Conflicting types
@@ -1060,8 +1040,6 @@ https://abf.openmandriva.org/build_lists/196754;perl-File-Find-Rule-Perl;x86_64;
 https://abf.openmandriva.org/build_lists/196755;perl-File-Find-Rule-Perl;znver1;9;Missing source
 https://abf.openmandriva.org/build_lists/196756;stardict-freedict-eng-por;x86_64;9;Missing source
 https://abf.openmandriva.org/build_lists/196758;oki4linux;x86_64;9;Missing source
-https://abf.openmandriva.org/build_lists/196760;perl-MDV-Packdrakeng;x86_64;9;Missing source
-https://abf.openmandriva.org/build_lists/196761;perl-MDV-Packdrakeng;znver1;9;Missing source
 https://abf.openmandriva.org/build_lists/196762;perl-Class-XSAccessor;x86_64;9;Missing source
 https://abf.openmandriva.org/build_lists/196764;makedepend;x86_64;9;Missing source
 https://abf.openmandriva.org/build_lists/196766;firefox;x86_64;9;Missing source
@@ -1112,7 +1090,6 @@ https://abf.openmandriva.org/build_lists/196890;gio-sharp;x86_64;9;Missing sourc
 https://abf.openmandriva.org/build_lists/196892;perl-HTML-Template;x86_64;9;Missing source
 https://abf.openmandriva.org/build_lists/196894;php-pear-XML_SVG;x86_64;9;Missing source
 https://abf.openmandriva.org/build_lists/196896;php-xdebug;x86_64;9;Missing source
-https://abf.openmandriva.org/build_lists/196898;pkgconfig;x86_64;9;Missing source
 https://abf.openmandriva.org/build_lists/196900;python-enchant;x86_64;9;Missing source
 https://abf.openmandriva.org/build_lists/196902;rhino;x86_64;9;Missing source
 https://abf.openmandriva.org/build_lists/196910;ypserv;x86_64;9;Missing source
@@ -1124,7 +1101,6 @@ https://abf.openmandriva.org/build_lists/196928;wvdial;x86_64;9;Missing source
 https://abf.openmandriva.org/build_lists/196930;libechonest;x86_64;9;Missing source
 https://abf.openmandriva.org/build_lists/196932;perl-Cairo;x86_64;9;Missing source
 https://abf.openmandriva.org/build_lists/196936;libmusicbrainz3;x86_64;9;Missing source
-https://abf.openmandriva.org/build_lists/196938;mdvpkg;x86_64;9;Missing source
 https://abf.openmandriva.org/build_lists/196940;perl-File-Which;x86_64;9;Missing source
 https://abf.openmandriva.org/build_lists/196942;dash;x86_64;9;Missing source
 https://abf.openmandriva.org/build_lists/196944;xload;x86_64;9;Missing source
@@ -1164,7 +1140,6 @@ https://abf.openmandriva.org/build_lists/197122;swi-prolog;x86_64;9;Missing sour
 https://abf.openmandriva.org/build_lists/197130;python-foolscap;x86_64;9;Missing source
 https://abf.openmandriva.org/build_lists/197132;python-notify;x86_64;9;Missing source
 https://abf.openmandriva.org/build_lists/197134;freetds;x86_64;9;Missing source
-https://abf.openmandriva.org/build_lists/197146;ntp;x86_64;9;Missing source
 https://abf.openmandriva.org/build_lists/197152;system-config-nfs;x86_64;9;Missing source
 https://abf.openmandriva.org/build_lists/197154;libprojectm;x86_64;9;Missing source
 https://abf.openmandriva.org/build_lists/197156;enblend;x86_64;9;Missing source
@@ -1284,7 +1259,6 @@ https://abf.openmandriva.org/build_lists/198276;libgssglue;x86_64;9;Missing sour
 https://abf.openmandriva.org/build_lists/198282;perl-Test-Number-Delta;x86_64;9;Missing source
 https://abf.openmandriva.org/build_lists/198296;fbset;x86_64;9;Missing source
 https://abf.openmandriva.org/build_lists/198318;texlive-xq;x86_64;9;Missing source
-https://abf.openmandriva.org/build_lists/198340;userdrake;x86_64;9;Missing source
 https://abf.openmandriva.org/build_lists/198344;perl-Crypt-OpenSSL-Random;x86_64;9;Missing source
 https://abf.openmandriva.org/build_lists/198346;btrfs-progs;x86_64;9;Missing source
 https://abf.openmandriva.org/build_lists/198410;perl-PDL;x86_64;9;Missing source
@@ -1473,7 +1447,6 @@ https://abf.openmandriva.org/build_lists/201132;php-pear-Net_DIME;x86_64;9;API i
 https://abf.openmandriva.org/build_lists/201136;python-beaker;x86_64;9;API issue
 https://abf.openmandriva.org/build_lists/201140;apcupsd;x86_64;9;API issue
 https://abf.openmandriva.org/build_lists/201142;perl-File-Slurp;x86_64;9;API issue
-https://abf.openmandriva.org/build_lists/201150;rpmstats;x86_64;9;API issue
 https://abf.openmandriva.org/build_lists/201154;inn;x86_64;9;API issue
 https://abf.openmandriva.org/build_lists/201156;perl-Tie-Simple;x86_64;9;API issue
 https://abf.openmandriva.org/build_lists/201164;libtunepimp;x86_64;9;API issue
@@ -1602,7 +1575,6 @@ https://abf.openmandriva.org/build_lists/201822;cronie;x86_64;9;API issue
 https://abf.openmandriva.org/build_lists/201832;networkmanager-pptp;x86_64;9;API issue
 https://abf.openmandriva.org/build_lists/201848;antlr;x86_64;9;API issue
 https://abf.openmandriva.org/build_lists/201850;gnumeric;x86_64;9;API issue
-https://abf.openmandriva.org/build_lists/201858;mdkonline;x86_64;9;API issue
 https://abf.openmandriva.org/build_lists/201860;mono-sharpcvslib;x86_64;9;API issue
 https://abf.openmandriva.org/build_lists/201864;axis;x86_64;9;API issue
 https://abf.openmandriva.org/build_lists/201868;digikam;x86_64;9;API issue
@@ -1740,11 +1712,7 @@ https://abf.openmandriva.org/build_lists/203938;inkscape;x86_64;9;API issue
 https://abf.openmandriva.org/build_lists/203954;kdelibs;x86_64;9;API issue
 https://abf.openmandriva.org/build_lists/203962;libkgapi;x86_64;9;API issue
 https://abf.openmandriva.org/build_lists/203972;icedtea-web;x86_64;9;API issue
-https://abf.openmandriva.org/build_lists/203978;urpmi;x86_64;9;API issue
 https://abf.openmandriva.org/build_lists/203980;perl-CGI;x86_64;9;API issue
-https://abf.openmandriva.org/build_lists/203982;drakconf;x86_64;9;API issue
-https://abf.openmandriva.org/build_lists/203984;rosa-media-player-plugin;x86_64;9;API issue
-https://abf.openmandriva.org/build_lists/203986;mock-urpm;x86_64;9;API issue
 https://abf.openmandriva.org/build_lists/203996;filezilla;x86_64;9;API issue
 https://abf.openmandriva.org/build_lists/203998;gvfs;x86_64;9;API issue
 https://abf.openmandriva.org/build_lists/204002;distro-theme;x86_64;9;API issue
@@ -1756,7 +1724,6 @@ https://abf.openmandriva.org/build_lists/204030;python-simplejson;x86_64;9;API i
 https://abf.openmandriva.org/build_lists/204032;telepathy-gabble;x86_64;9;API issue
 https://abf.openmandriva.org/build_lists/204034;papi;x86_64;9;API issue
 https://abf.openmandriva.org/build_lists/204036;samba;x86_64;9;API issue
-https://abf.openmandriva.org/build_lists/204040;rosa-media-player;x86_64;9;API issue
 https://abf.openmandriva.org/build_lists/204042;perl-CPANPLUS;x86_64;9;API issue
 https://abf.openmandriva.org/build_lists/204044;transmission;x86_64;9;API issue
 https://abf.openmandriva.org/build_lists/204048;perl-Devel-StackTrace;x86_64;9;API issue
@@ -1794,20 +1761,17 @@ https://abf.openmandriva.org/build_lists/204146;lm_sensors;x86_64;9;API issue
 https://abf.openmandriva.org/build_lists/204150;perl-Convert-UU;x86_64;9;API issue
 https://abf.openmandriva.org/build_lists/204154;kdepim-runtime;x86_64;9;API issue
 https://abf.openmandriva.org/build_lists/204156;brltty;x86_64;9;API issue
-https://abf.openmandriva.org/build_lists/204158;dudf;x86_64;9;API issue
 https://abf.openmandriva.org/build_lists/204162;perl-libintl-perl;x86_64;9;API issue
 https://abf.openmandriva.org/build_lists/204166;ekiga;x86_64;9;API issue
 https://abf.openmandriva.org/build_lists/204172;fribidi;x86_64;9;API issue
 https://abf.openmandriva.org/build_lists/204176;wpa_supplicant;x86_64;9;API issue
 https://abf.openmandriva.org/build_lists/204180;powertop;x86_64;9;API issue
-https://abf.openmandriva.org/build_lists/204192;systemd-ui;x86_64;9;API issue
 https://abf.openmandriva.org/build_lists/204194;abb;x86_64;9;API issue
 https://abf.openmandriva.org/build_lists/204198;libgda;x86_64;9;API issue
 https://abf.openmandriva.org/build_lists/204200;torque;x86_64;9;API issue
 https://abf.openmandriva.org/build_lists/204204;botan;x86_64;9;API issue
 https://abf.openmandriva.org/build_lists/204206;perl-Term-UI;x86_64;9;API issue
 https://abf.openmandriva.org/build_lists/204208;python-perlmodule;x86_64;9;API issue
-https://abf.openmandriva.org/build_lists/204210;chrony;x86_64;9;API issue
 https://abf.openmandriva.org/build_lists/204212;dpkg;x86_64;9;API issue
 https://abf.openmandriva.org/build_lists/204214;procps-ng;x86_64;9;API issue
 https://abf.openmandriva.org/build_lists/204222;thunderbird;x86_64;9;API issue
@@ -1913,15 +1877,6 @@ https://abf.openmandriva.org/build_lists/204774;trojita;x86_64;9;API issue
 https://abf.openmandriva.org/build_lists/204776;dmg2img;x86_64;9;API issue
 https://abf.openmandriva.org/build_lists/204782;tomoyo-tools;x86_64;9;API issue
 https://abf.openmandriva.org/build_lists/204784;u-boot;x86_64;9;API issue
-https://abf.openmandriva.org/build_lists/204786;kcm-XFdrake;x86_64;9;API issue
-https://abf.openmandriva.org/build_lists/204788;kcm-userdrake;x86_64;9;API issue
-https://abf.openmandriva.org/build_lists/204790;kcm-update-freq;x86_64;9;API issue
-https://abf.openmandriva.org/build_lists/204792;kcm-rpmdrake-update;x86_64;9;API issue
-https://abf.openmandriva.org/build_lists/204794;kcm-rpmdrake-sources;x86_64;9;API issue
-https://abf.openmandriva.org/build_lists/204796;kcm-rpmdrake;x86_64;9;API issue
-https://abf.openmandriva.org/build_lists/204800;kcm-draksec;x86_64;9;API issue
-https://abf.openmandriva.org/build_lists/204802;kcm-drakguard;x86_64;9;API issue
-https://abf.openmandriva.org/build_lists/204806;kcm-drakauth;x86_64;9;API issue
 https://abf.openmandriva.org/build_lists/204810;ntrack;x86_64;9;API issue
 https://abf.openmandriva.org/build_lists/204812;fcitx;x86_64;9;API issue
 https://abf.openmandriva.org/build_lists/204814;kcm-fcitx;x86_64;9;API issue
@@ -2027,7 +1982,6 @@ https://abf.openmandriva.org/build_lists/205168;perl-Gtk3-Notify;x86_64;9;Missin
 https://abf.openmandriva.org/build_lists/205170;perl-Gtk3-WebKit;x86_64;9;Missing source
 https://abf.openmandriva.org/build_lists/205172;perl-Crypt-OpenSSL-X509;x86_64;9;Missing source
 https://abf.openmandriva.org/build_lists/205174;kio-mtp;x86_64;9;Missing source
-https://abf.openmandriva.org/build_lists/205180;kmscon;x86_64;9;Missing source
 https://abf.openmandriva.org/build_lists/205184;polarssl;x86_64;9;Missing source
 https://abf.openmandriva.org/build_lists/205186;apper;x86_64;9;Missing source
 https://abf.openmandriva.org/build_lists/205194;python-ipaddr;x86_64;9;Missing source
@@ -2075,7 +2029,6 @@ https://abf.openmandriva.org/build_lists/205920;gnome-music;x86_64;9;Conflicting
 https://abf.openmandriva.org/build_lists/205928;gnome-flashback;x86_64;9;Conflicting types
 https://abf.openmandriva.org/build_lists/205930;x11-driver-video-freedreno;x86_64;9;Conflicting types
 https://abf.openmandriva.org/build_lists/205936;fossil;x86_64;9;Conflicting types
-https://abf.openmandriva.org/build_lists/205940;sni-qt;x86_64;9;Conflicting types
 https://abf.openmandriva.org/build_lists/205942;mozjs31;x86_64;9;Conflicting types
 https://abf.openmandriva.org/build_lists/205944;python-sane;x86_64;9;Conflicting types
 https://abf.openmandriva.org/build_lists/205946;man2html-core;x86_64;9;Conflicting types
@@ -2189,7 +2142,6 @@ https://abf.openmandriva.org/build_lists/206320;jna;x86_64;9;Conflicting types
 https://abf.openmandriva.org/build_lists/206324;kalarmcal;x86_64;9;Conflicting types
 https://abf.openmandriva.org/build_lists/206328;kcalutils;x86_64;9;Conflicting types
 https://abf.openmandriva.org/build_lists/206330;fwupd;x86_64;9;Conflicting types
-https://abf.openmandriva.org/build_lists/206346;bumblebee;x86_64;9;Conflicting types
 https://abf.openmandriva.org/build_lists/206350;sisu-maven-plugin;x86_64;9;Conflicting types
 https://abf.openmandriva.org/build_lists/206352;python-formencode;x86_64;9;Conflicting types
 https://abf.openmandriva.org/build_lists/206354;plexus-cdc;x86_64;9;Conflicting types
@@ -2533,7 +2485,6 @@ https://abf.openmandriva.org/build_lists/207758;libkdcraw23;x86_64;9;Compiler se
 https://abf.openmandriva.org/build_lists/207760;libksane0;x86_64;9;Compiler segfault
 https://abf.openmandriva.org/build_lists/207770;plasma-integration;x86_64;9;Compiler segfault
 https://abf.openmandriva.org/build_lists/207772;simplesystray;x86_64;9;Compiler segfault
-https://abf.openmandriva.org/build_lists/207786;hawkey;x86_64;9;Compiler segfault
 https://abf.openmandriva.org/build_lists/207794;libkmahjongg4;x86_64;9;Compiler segfault
 https://abf.openmandriva.org/build_lists/207796;krita;x86_64;9;Compiler segfault
 https://abf.openmandriva.org/build_lists/207806;libkdepim;x86_64;9;Compiler segfault
@@ -2549,7 +2500,6 @@ https://abf.openmandriva.org/build_lists/207834;kdgantt2;x86_64;9;Compiler segfa
 https://abf.openmandriva.org/build_lists/207836;eventviews;x86_64;9;Compiler segfault
 https://abf.openmandriva.org/build_lists/207838;incidenceeditor;x86_64;9;Compiler segfault
 https://abf.openmandriva.org/build_lists/207840;libksieve;x86_64;9;Compiler segfault
-https://abf.openmandriva.org/build_lists/207842;libhif;x86_64;9;Compiler segfault
 https://abf.openmandriva.org/build_lists/207844;kdepim-apps-libs;x86_64;9;Compiler segfault
 https://abf.openmandriva.org/build_lists/207846;python-enum34;x86_64;9;Compiler segfault
 https://abf.openmandriva.org/build_lists/207848;python-idna;x86_64;9;Compiler segfault
