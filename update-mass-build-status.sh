@@ -14,6 +14,6 @@ touch massbuild.lock
 [ -e /home/omv/massbuild/massbuild-new.html ] && rm -rf /home/omv/massbuild/massbuild-new.html
 [ ! -e /home/omv/massbuild/massbuild-new.html ] && touch /home/omv/massbuild/massbuild-new.html && chown massbuild:massbuild /home/omv/massbuild/massbuild-new.html
 
-./generate-status.sh 155 >/home/omv/massbuild/massbuild-new.html
+./generate-status.sh 182 >/home/omv/massbuild/massbuild-new.html
 mv -f /home/omv/massbuild/massbuild-new.html /home/omv/massbuild/massbuild.html
 rm -f massbuild.lock
