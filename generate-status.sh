@@ -1,6 +1,6 @@
 #!/bin/sh
 # Generate a HTML page indicating the current status of mass build fixing
-# (C) 2018 Bernhard "Bero" Rosenkraenzer <bero@lindev.ch>
+# (C) 2018-2019 Bernhard "Bero" Rosenkraenzer <bero@lindev.ch>
 # Released under the GPLv3
 
 OURDIR="$(realpath $(dirname $0))"
@@ -57,7 +57,7 @@ cat failed_builds_list.txt |while read r; do
 		echo "			<tr>"
 	fi
 	echo "				<th><a href=\"http://abf.openmandriva.org/build_lists/$ID\">$ID</a></th>"
-	echo "				<td><a href=\"http://github.com/OpenMandrivaAssociation/$PROJECT\">$PROJECT</a></td>"
+	echo "				<td><a href=\"http://abf.openmandriva.org/openmandriva/$PROJECT/build_lists\">$PROJECT</a></td>"
 	echo "				<td>$ARCH</td>"
 	if $FIXED; then
 		echo "				<td><a href=\"http://abf.openmandriva.org/build_lists/$LATEST\">FIXED</a></td>"
@@ -120,7 +120,7 @@ cat failed_builds_list.txt |while read r; do
 				echo -n "Python3 issue"
 			elif grep -q "Input specfile does not exist" build.log; then
 				echo -n "Spec file is missing"
-			elif grep -q "- nothing provides" build.log; then
+			elif grep -q -- "- nothing provides" build.log; then
 				echo -n "Broken dependency"
 			else
 				echo -n "Unknown failure"
